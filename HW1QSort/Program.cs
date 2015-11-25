@@ -21,35 +21,35 @@ namespace HW1QSort
         }
         static void QuickSortInc(int[] arr, int first, int last)
         {
-            int p = arr[(last - first) / 2 + first];
+            int middleElem = arr[(last - first) / 2 + first];
             int temp;
-            int i = first, j = last;
-            while (i <= j)
+            int leftElem = first, rightElem = last;
+            while (leftElem <= rightElem)
             {
-                while (arr[i] < p && i <= last)
+                while (arr[leftElem] < middleElem && leftElem <= last)
                 {
-                    ++i;
+                    ++leftElem;
                 }
-                while (arr[j] > p && j >= first) 
+                while (arr[rightElem] > middleElem && rightElem >= first) 
                 { 
-                    --j; 
+                    --rightElem; 
                 }
-                if (i <= j)
+                if (leftElem <= rightElem)
                 {
-                    temp = arr[i];
-                    arr[i] = arr[j];
-                    arr[j] = temp;
-                    ++i;
-                    --j;
+                    temp = arr[leftElem];
+                    arr[leftElem] = arr[rightElem];
+                    arr[rightElem] = temp;
+                    ++leftElem;
+                    --rightElem;
                 }
             }
-            if (j > first)
+            if (rightElem > first)
             {
-                QuickSortInc(arr, first, j);
+                QuickSortInc(arr, first, rightElem);
             }
-            if (i < last)
+            if (leftElem < last)
             {
-                QuickSortInc(arr, i, last);
+                QuickSortInc(arr, leftElem, last);
             }
         }  
     }
